@@ -115,13 +115,13 @@ int main()
 {
     string S, S1, S2;
 
-    cout << "Enter string S ";
+    cout << "Enter string S: ";
     getline(cin, S);
 
-    cout << "Enter string S1 ";
+    cout << "Enter string S1: ";
     cin >> S1;
 
-    cout << "Enter string S2 ";
+    cout << "Enter string S2A: ";
     cin >> S2;
 
     int pos = S.find(S1); 
@@ -129,6 +129,6 @@ int main()
         S.replace(pos, S1.length(), S2);
     }
 
-    cout << "Result " << S << endl;
+    cout << "Result: " << S << endl;
     return 0;
 }
