@@ -111,24 +111,48 @@ using namespace std;
 //	return 0;
 //}
 
+//int main()
+//{
+//    string S, S1, S2;
+//
+//    cout << "Enter string S: ";
+//    getline(cin, S);
+//
+//    cout << "Enter string S1: ";
+//    cin >> S1;
+//
+//    cout << "Enter string S2: ";
+//    cin >> S2;
+//
+//    int pos = S.find(S1); 
+//    if (pos != -1) {
+//        S.replace(pos, S1.length(), S2);
+//    }
+//
+//    cout << "Result: " << S << endl;
+//    return 0;
+//}
+
 int main()
 {
-    string S, S1, S2;
+	string S, S1, S2;
+	
+	cout << "Enter string S: ";
+	getline(cin, S);
+	
+	cout << "Enter string S1: ";
+	cin >> S1;
+	
+	cout << "Enter string S2: ";
+	cin >> S2;
+	
+	int pos = S.find(S1); 
+	while (pos != -1) {
+		S.replace(pos, S1.length(), S2);
+		int pos = S.find(S1);
+	}
+	
+	cout << "Result: " << S << endl;
 
-    cout << "Enter string S: ";
-    getline(cin, S);
-
-    cout << "Enter string S1: ";
-    cin >> S1;
-
-    cout << "Enter string S2A: ";
-    cin >> S2;
-
-    int pos = S.find(S1); 
-    if (pos != -1) {
-        S.replace(pos, S1.length(), S2);
-    }
-
-    cout << "Result: " << S << endl;
-    return 0;
+	return 0;
 }
