@@ -86,27 +86,49 @@ using namespace std;
 //			S.erase(pos, S0.length());
 //		}
 //
-//		cout << "Result" << S << endl;
+//		cout << "Result: " << S << endl;
 //		return 0;	
+//}
+
+//int main()
+//{
+//	string S, S0;
+//	cout << "Enter a string: ";
+//	getline(cin, S);
+//	
+//	cout << "Enter a substring: ";
+//	cin >> S0;
+//	
+//	int pos = S.find(S0);
+//	
+//	while (pos != -1)
+//	{
+//		S.erase(pos, S0.length());
+//		pos = S.find(S0);
+//	}
+//	
+//	cout << "Result: " << S << endl;
+//	return 0;
 //}
 
 int main()
 {
-	string S, S0;
-	cout << "Enter a string: ";
-	getline(cin, S);
-	
-	cout << "Enter a substring: ";
-	cin >> S0;
-	
-	int pos = S.find(S0);
-	
-	while (pos != -1)
-	{
-		S.erase(pos, S0.length());
-		pos = S.find(S0);
-	}
-	
-	cout << "Result" << S << endl;
-	return 0;
+    string S, S1, S2;
+
+    cout << "Enter string S ";
+    getline(cin, S);
+
+    cout << "Enter string S1 ";
+    cin >> S1;
+
+    cout << "Enter string S2 ";
+    cin >> S2;
+
+    int pos = S.find(S1); 
+    if (pos != -1) {
+        S.replace(pos, S1.length(), S2);
+    }
+
+    cout << "Result " << S << endl;
+    return 0;
 }
