@@ -6,11 +6,11 @@ using namespace std;
 int main()
 {
  	char C = 0;
-    string S;
-	string S0;
+	string S, S0;
     cout << "Enter a character: ";
  	cin >> C;
  	cout << "Enter a string: ";
+	cin.ignore();
     getline(cin, S);
     cout << "Enter a substring: ";
     cin >> S0;
