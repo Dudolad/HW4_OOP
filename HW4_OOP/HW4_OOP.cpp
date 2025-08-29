@@ -49,22 +49,44 @@ using namespace std;
 //	 	return 0;
 //}
 
+//int main()
+//{
+//	string S, S0;
+//		cout << "Enter a string: ";
+//		getline(cin, S);
+//		cout << "Enter a substring: ";
+//		cin >> S0;
+//
+//		int count = 0;	
+//		int pos = S.find(S0);
+//	
+//		
+//		while (pos != -1) {
+//			count++;
+//			pos = S.find(S0, pos + S0.length());
+//		}
+//		cout << "Count: " << count << endl;
+//		return 0;
+//}
+
 int main()
 {
-	string S, S0;
+		string S, S0;
+
 		cout << "Enter a string: ";
 		getline(cin, S);
+
 		cout << "Enter a substring: ";
 		cin >> S0;
 
-		int count = 0;	
 		int pos = S.find(S0);
-	
-		
-		while (pos != -1) {
-			count++;
-			pos = S.find(S0, pos + S0.length());
+
+		if (pos != -1)
+		{
+			S.erase(pos, S0.length());
 		}
-		cout << "Count: " << count << endl;
+
+		cout << "Result" << S << endl;
 		return 0;
+		
 }
