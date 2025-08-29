@@ -101,7 +101,7 @@ int main()
 	
 	int pos = S.find(S0);
 	
-	if (pos != -1)
+	while (pos != -1)
 	{
 		S.erase(pos, S0.length());
 		pos = S.find(S0);
