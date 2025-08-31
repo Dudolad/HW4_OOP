@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <windows.h>
 using namespace std;
+
 
 //int main()
 //{
@@ -159,6 +161,10 @@ using namespace std;
 
 int main()
 {
+
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251); 
+
 	string S;
 
 	cout << "Enter a string: ";
@@ -166,14 +172,16 @@ int main()
 
 	string result;
 
-	for (int i = 0; i < S.length(); i+= 2)
+	for (int i = 0; i < S.length(); i++)
 	{
-		result = +S[i];
+		if ((i + 1) % 2 == 0) { 
+			result += S[i];
+		}
 	}
 
-	for (int i = S.length() - 1; i >= 0; i--)
+	for (int i = S.length() - 1; i >= 0; i--) 
 	{
-		if (i % 2 == 1) {
+		if ((i + 1) % 2 == 1) { 
 			result += S[i];
 		}
 	}
