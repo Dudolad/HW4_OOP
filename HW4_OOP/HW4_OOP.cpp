@@ -133,26 +133,50 @@ using namespace std;
 //    return 0;
 //}
 
+//int main()
+//{
+//	string S, S1, S2;
+//	
+//	cout << "Enter string S: ";
+//	getline(cin, S);
+//	
+//	cout << "Enter string S1: ";
+//	cin >> S1;
+//	
+//	cout << "Enter string S2: ";
+//	cin >> S2;
+//	
+//	int pos = S.find(S1); 
+//	while (pos != -1) {
+//		S.replace(pos, S1.length(), S2);
+//		pos = S.find(S1);
+//	}
+//	
+//	cout << "Result: " << S << endl;
+//
+//	return 0;
+//}
+
 int main()
 {
-	string S, S1, S2;
-	
-	cout << "Enter string S: ";
-	getline(cin, S);
-	
-	cout << "Enter string S1: ";
-	cin >> S1;
-	
-	cout << "Enter string S2: ";
-	cin >> S2;
-	
-	int pos = S.find(S1); 
-	while (pos != -1) {
-		S.replace(pos, S1.length(), S2);
-		int pos = S.find(S1);
-	}
-	
-	cout << "Result: " << S << endl;
+	string S;
 
+	cout << "Enter a string: ";
+	getline(cin, S);
+
+	string result;
+
+	for (int i = 0; i < S.length(); i+= 2)
+	{
+		result = +S[i];
+	}
+
+	for (int i = S.length() - 1; i >= 0; i--)
+	{
+		if (i % 2 == 1) {
+			result += S[i];
+		}
+	}
+	cout << "Result: " << result << endl;
 	return 0;
 }
