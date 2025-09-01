@@ -195,32 +195,31 @@ int main()
 	SetConsoleOutputCP(1251);
 	SetConsoleCP(1251);
 
-	string encrypted;
-	cout << "Enter an encrypted string: ";
-	getline(cin, encrypted);
+    string S;
+    cout << "Enter encrypted string ";
+    getline(cin, S);
 
-	int n = encrypted.length();
-	int evenCount = (n + 1) / 2;
-	int oddCount = n / 2;
+    int n = S.length();
+    int evenCount = n / 2;       
+    int oddCount = (n + 1) / 2;  
 
-	string evens = encrypted.substr(0, evenCount);
-	string odds = encrypted.substr(evenCount);
+    string evens = S.substr(0, evenCount); 
+    string odds = S.substr(evenCount);    
+    reverse(odds.begin(), odds.end());     
 
-	reverse(odds.begin(), odds.end());
+    string original;
+    original.reserve(n);
 
-	string original(n, ' ');
+    int e = 0, o = 0;
+    for (int i = 1; i <= n; i++) {
+        if (i % 2 == 0) {
+            original += evens[e++];
+        }
+        else {
+            original += odds[o++];
+        }
+    }
 
-	int e = 0, o = 0;
-	for (int i = 0; i < n; i++)
-	{
-		if (i % 2 == 0) {
-			original[i] = evens[e++];
-		}
-		else {
-			original[i] = odds[o++];
-		}
-	}
-
-	cout << "Original string: " << original << endl;
-	return 0;
+    cout << "Decrypted " << original << endl;
+    return 0;
 }
