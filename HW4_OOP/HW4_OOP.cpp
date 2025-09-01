@@ -159,32 +159,68 @@ using namespace std;
 //	return 0;
 //}
 
+//int main()
+//{
+//
+//	SetConsoleOutputCP(1251);
+//	SetConsoleCP(1251); 
+//
+//	string S;
+//
+//	cout << "Enter a string: ";
+//	getline(cin, S); 
+//
+//	string result;
+//
+//	for (int i = 0; i < S.length(); i++)
+//	{
+//		if ((i + 1) % 2 == 0) { 
+//			result += S[i];
+//		}
+//	}
+//
+//	for (int i = S.length() - 1; i >= 0; i--) 
+//	{
+//		if ((i + 1) % 2 == 1) { 
+//			result += S[i];
+//		}
+//	}
+//	cout << "Result: " << result << endl;
+//	return 0;
+//}
+
 int main()
 {
 
 	SetConsoleOutputCP(1251);
-	SetConsoleCP(1251); 
+	SetConsoleCP(1251);
 
-	string S;
+	string encrypted;
+	cout << "Enter an encrypted string: ";
+	getline(cin, encrypted);
 
-	cout << "Enter a string: ";
-	getline(cin, S);
+	int n = encrypted.length();
+	int evenCount = (n + 1) / 2;
+	int oddCount = n / 2;
 
-	string result;
+	string evens = encrypted.substr(0, evenCount);
+	string odds = encrypted.substr(evenCount);
 
-	for (int i = 0; i < S.length(); i++)
+	reverse(odds.begin(), odds.end());
+
+	string original(n, ' ');
+
+	int e = 0, o = 0;
+	for (int i = 0; i < n; i++)
 	{
-		if ((i + 1) % 2 == 0) { 
-			result += S[i];
+		if (i % 2 == 0) {
+			original[i] = evens[e++];
+		}
+		else {
+			original[i] = odds[o++];
 		}
 	}
 
-	for (int i = S.length() - 1; i >= 0; i--) 
-	{
-		if ((i + 1) % 2 == 1) { 
-			result += S[i];
-		}
-	}
-	cout << "Result: " << result << endl;
+	cout << "Original string: " << original << endl;
 	return 0;
 }
