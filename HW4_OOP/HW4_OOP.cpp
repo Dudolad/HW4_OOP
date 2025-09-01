@@ -266,17 +266,56 @@ using namespace std;
 //	return 0;
 //}
 
+//int main()
+//{
+//	string inputFile = "dates.txt";
+//	string daysFile = "days.txt";
+//	string monthsFile = "months.txt";
+//
+//	ifstream fin(inputFile);
+//	ofstream foutDays(daysFile);
+//	ofstream foutMonths(monthsFile);
+//
+//	if (!fin || !foutDays || !foutMonths)
+//	{
+//		cout << "Error opening files!!!" << endl;
+//		return 1;
+//	}
+//
+//	string line;
+//	while (getline(fin, line))
+//	{
+//		if (line.length() < 10) continue;
+// 		
+//
+//		string dayStr = line.substr(0, 2);
+//		string monthStr = line.substr(3, 2);
+//
+//		int day = stoi(dayStr);
+//		int month = stoi(monthStr);
+//
+//		foutDays << day << " ";
+//		foutMonths << month << " ";
+//	}
+//
+//	cout << "Data written to files. " << endl;
+//
+//	fin.close();
+//	foutDays.close();
+//	foutMonths.close();
+//
+//	return 0;
+//}
+
 int main()
 {
 	string inputFile = "dates.txt";
-	string daysFile = "days.txt";
-	string monthsFile = "months.txt";
+	string outputFile = "summer_dates.txt";
 
 	ifstream fin(inputFile);
-	ofstream foutDays(daysFile);
-	ofstream foutMonths(monthsFile);
+	ofstream fout(outputFile);
 
-	if (!fin || !foutDays || !foutMonths)
+	if (!fin || !fout)
 	{
 		cout << "Error opening files!!!" << endl;
 		return 1;
@@ -285,24 +324,21 @@ int main()
 	string line;
 	while (getline(fin, line))
 	{
-		if (line.length() < 10) continue;
- 		
+		if(line.length() < 10) continue;
 
-		string dayStr = line.substr(0, 2);
-		string monthStr = line.substr(3, 2);
-
-		int day = stoi(dayStr);
+		string monthStr = line.substr(3, 2); 
 		int month = stoi(monthStr);
 
-		foutDays << day << " ";
-		foutMonths << month << " ";
+		if (month >= 6 && month <= 8)
+		{
+			fout << line << endl;
+		}
 	}
-
-	cout << "Data written to files. " << endl;
+	
+	cout << "Summer dates written to file. " << endl;
 
 	fin.close();
-	foutDays.close();
-	foutMonths.close();
+	fout.close();
 
 	return 0;
 }
