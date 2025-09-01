@@ -224,44 +224,85 @@ using namespace std;
 //    return 0;
 //}
 
+//int main()
+//{
+//	string SA, SB, SC, SD;
+//
+//	cout << "Enter filename A: ";
+//	cin >> SA;
+//	cout << "Enter filename B: ";
+//	cin >> SB;
+//	cout << "Enter filename C: ";
+//	cin >> SC;
+//	cout << "Enter filename D(output): ";
+//	cin >> SD;
+//
+//	ifstream fileA(SA);
+//	ifstream fileB(SB);
+//	ifstream fileC(SC);
+//	ofstream fileD(SD);
+//
+//	if (!fileA || !fileB || !fileC || !fileD)
+//	{
+//		cout << "Error opening files!!!" << endl;
+//		return 1;
+//	}
+//
+//	int a, b, c;
+//
+//	while (fileA >> a && fileB >> b && fileC >> c)
+//	{
+//		fileD << a << " " << b << " " << c << " ";
+//	}
+//
+//	cout << "Data written to file " << SD << endl;
+//
+//	fileA.close();
+//	fileB.close();
+//	fileC.close();
+//	fileD.close();
+//
+//
+//	return 0;
+//}
+
 int main()
 {
-	string SA, SB, SC, SD;
+	string inputFile = "dates.txt";
+	string daysFile = "days.txt";
+	string monthsFile = "months.txt";
 
-	cout << "Enter filename A: ";
-	cin >> SA;
-	cout << "Enter filename B: ";
-	cin >> SB;
-	cout << "Enter filename C: ";
-	cin >> SC;
-	cout << "Enter filename D(output): ";
-	cin >> SD;
+	ifstream fin(inputFile);
+	ofstream foutDays(daysFile);
+	ofstream foutMonths(monthsFile);
 
-	ifstream fileA(SA);
-	ifstream fileB(SB);
-	ifstream fileC(SC);
-	ofstream fileD(SD);
-
-	if (!fileA || !fileB || !fileC || !fileD)
+	if (!fin || !foutDays || !foutMonths)
 	{
 		cout << "Error opening files!!!" << endl;
 		return 1;
 	}
 
-	int a, b, c;
-
-	while (fileA >> a && fileB >> b && fileC >> c)
+	string line;
+	while (getline(fin, line))
 	{
-		fileD << a << " " << b << " " << c << " ";
+		if (line.length() < 10) continue;
+ 		
+
+		string dayStr = line.substr(0, 2);
+		string monthStr = line.substr(3, 2);
+
+		int day = stoi(dayStr);
+		int month = stoi(monthStr);
+
+		foutDays << day << " ";
+		foutMonths << month << " ";
 	}
 
-	cout << "Data written to file " << SD << endl;
+	cout << "Data written to files. " << endl;
 
-	fileA.close();
-	fileB.close();
-	fileC.close();
-	fileD.close();
-
+	fin.close();
+	foutDays.close();
+	foutMonths.close();
 
 	return 0;
 }
