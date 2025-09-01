@@ -189,37 +189,79 @@ using namespace std;
 //	return 0;
 //}
 
+//int main()
+//{
+//
+//	SetConsoleOutputCP(1251);
+//	SetConsoleCP(1251);
+//
+//    string S;
+//    cout << "Enter encrypted string ";
+//    getline(cin, S);
+//
+//    int n = S.length();
+//    int evenCount = n / 2;       
+//    int oddCount = (n + 1) / 2;  
+//
+//    string evens = S.substr(0, evenCount); 
+//    string odds = S.substr(evenCount);    
+//    reverse(odds.begin(), odds.end());     
+//
+//    string original;
+//    original.reserve(n);
+//
+//    int e = 0, o = 0;
+//    for (int i = 1; i <= n; i++) {
+//        if (i % 2 == 0) {
+//            original += evens[e++];
+//        }
+//        else {
+//            original += odds[o++];
+//        }
+//    }
+//
+//    cout << "Decrypted " << original << endl;
+//    return 0;
+//}
+
 int main()
 {
+	string SA, SB, SC, SD;
 
-	SetConsoleOutputCP(1251);
-	SetConsoleCP(1251);
+	cout << "Enter filename A: ";
+	cin >> SA;
+	cout << "Enter filename B: ";
+	cin >> SB;
+	cout << "Enter filename C: ";
+	cin >> SC;
+	cout << "Enter filename D(output): ";
+	cin >> SD;
 
-    string S;
-    cout << "Enter encrypted string ";
-    getline(cin, S);
+	ifstream fileA(SA);
+	ifstream fileB(SB);
+	ifstream fileC(SC);
+	ofstream fileD(SD);
 
-    int n = S.length();
-    int evenCount = n / 2;       
-    int oddCount = (n + 1) / 2;  
+	if (!fileA || !fileB || !fileC || !fileD)
+	{
+		cout << "Error opening files!!!" << endl;
+		return 1;
+	}
 
-    string evens = S.substr(0, evenCount); 
-    string odds = S.substr(evenCount);    
-    reverse(odds.begin(), odds.end());     
+	int a, b, c;
 
-    string original;
-    original.reserve(n);
+	while (fileA >> a && fileB >> b && fileC >> c)
+	{
+		fileD << a << " " << b << " " << c << " ";
+	}
 
-    int e = 0, o = 0;
-    for (int i = 1; i <= n; i++) {
-        if (i % 2 == 0) {
-            original += evens[e++];
-        }
-        else {
-            original += odds[o++];
-        }
-    }
+	cout << "Data written to file " << SD << endl;
 
-    cout << "Decrypted " << original << endl;
-    return 0;
+	fileA.close();
+	fileB.close();
+	fileC.close();
+	fileD.close();
+
+
+	return 0;
 }
