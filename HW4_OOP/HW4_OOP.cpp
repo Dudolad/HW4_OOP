@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <windows.h>
+#include <sstream>
 using namespace std;
 
 
@@ -307,10 +308,46 @@ using namespace std;
 //	return 0;
 //}
 
+//int main()
+//{
+//	string inputFile = "dates.txt";
+//	string outputFile = "summer_dates.txt";
+//
+//	ifstream fin(inputFile);
+//	ofstream fout(outputFile);
+//
+//	if (!fin || !fout)
+//	{
+//		cout << "Error opening files!!!" << endl;
+//		return 1;
+//	}
+//
+//	string line;
+//	while (getline(fin, line))
+//	{
+//		if(line.length() < 10) continue;
+//
+//		string monthStr = line.substr(3, 2); 
+//		int month = stoi(monthStr);
+//
+//		if (month >= 6 && month <= 8)
+//		{
+//			fout << line << endl;
+//		}
+//	}
+//	
+//	cout << "Summer dates written to file. " << endl;
+//
+//	fin.close();
+//	fout.close();
+//
+//	return 0;
+//}
+
 int main()
 {
-	string inputFile = "dates.txt";
-	string outputFile = "summer_dates.txt";
+	string inputFile = "f.txt";
+	string outputFile = "g.txt";
 
 	ifstream fin(inputFile);
 	ofstream fout(outputFile);
@@ -321,21 +358,28 @@ int main()
 		return 1;
 	}
 
+	int option;
+	cout << "Choose format (1 or 2): ";
+	cin >> option;
+
 	string line;
 	while (getline(fin, line))
 	{
-		if(line.length() < 10) continue;
+		if (line.empty()) continue;
 
-		string monthStr = line.substr(3, 2); 
-		int month = stoi(monthStr);
+		stringstream ss(line);
+		string surname, name, patronymic;
+		ss >> surname >> name >> patronymic;
 
-		if (month >= 6 && month <= 8)
-		{
-			fout << line << endl;
+		if (option == 1) {
+			fout << name << " " << patronymic << " " << surname << endl;
+		}
+		else if (option == 2) {
+			fout << surname << " "<< name[0] << "." << patronymic[0] << "." << endl;
 		}
 	}
-	
-	cout << "Summer dates written to file. " << endl;
+
+	cout << "Data written to file. " << endl;
 
 	fin.close();
 	fout.close();
